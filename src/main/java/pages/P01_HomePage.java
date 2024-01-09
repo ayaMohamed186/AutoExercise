@@ -31,9 +31,24 @@ public class P01_HomePage {
     private final By dressWomenCategory = By.xpath("//a[@href='/category_products/1']");
     private final By recommendationItemsMsgSection = By.xpath("(//h2[@class='title text-center'])[2]");
     private final By recommendProductAddToCart = By.xpath("(//a[@data-product-id='1'])[3]");
-    private final By recommendProductName = By.xpath("");
+    private final By arrowBtnToScrollUp = By.xpath("//i[@class='fa fa-angle-up']");
+    private final By homePageMsgDisplayed = By.xpath("(//div[@class='col-sm-6'])[1]/h2");
 
+    public boolean validateHomePageMsgDisplay(){
+        shortWait(driver).until(ExpectedConditions.elementToBeClickable(this.arrowBtnToScrollUp));
+        return driver.findElement(this.homePageMsgDisplayed).isDisplayed();
+    }
 
+    public P01_HomePage clickOnArrowBtnToScrollUp(){
+        try {
+            shortWait(driver).until(ExpectedConditions.elementToBeClickable(this.arrowBtnToScrollUp));
+        }catch (TimeoutException ex){
+            ex.printStackTrace();//to print error
+            System.out.println("Error happened is " + ex.getMessage());
+        }
+        driver.findElement(this.arrowBtnToScrollUp).click();
+        return this;
+    }
     public boolean validateCategoryDisplayed(){
         shortWait(driver).until(ExpectedConditions.visibilityOfElementLocated(this.categoryText));
         return driver.findElement(this.categoryText).isDisplayed();
@@ -127,6 +142,11 @@ public class P01_HomePage {
     public P01_HomePage scrollToFooter(){
         WebElement footerElement = driver.findElement(By.id("susbscribe_email"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", footerElement);
+        return this;
+    }
+    public P01_HomePage scrollToHeader(){
+        WebElement headerElement = driver.findElement(By.id("(//a[@href='/'])[2]"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", headerElement);
         return this;
     }
     public boolean validateSubscriptionDisplay(){
