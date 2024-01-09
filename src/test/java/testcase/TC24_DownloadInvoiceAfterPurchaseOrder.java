@@ -76,6 +76,7 @@ public class TC24_DownloadInvoiceAfterPurchaseOrder extends TestBase {
         String fileName = "invoice.txt";
         Assert.assertTrue(new P15_PaymentDonePage(driver).validateFileDownloaded(filePath, fileName));
 
+        // need to delete file from downloads path
         System.out.println(new P15_PaymentDonePage(driver).validateFileDownloaded(filePath, fileName));
 
 
