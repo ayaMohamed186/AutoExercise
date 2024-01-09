@@ -7,6 +7,8 @@ import pages.P08_ProductsPage;
 import pages.P09_ProductDetailsPage;
 import pages.P10_CartPage;
 
+import static util.Utility.captureScreenshot;
+
 public class TC12_AddProductsToCart extends TestBase {
     String firstProductNameAdded;
     String secondProductNameAdded;
@@ -42,6 +44,7 @@ public class TC12_AddProductsToCart extends TestBase {
         secondProductQuantity = new P09_ProductDetailsPage(driver).getFirstProductQuantity();
 
         new P01_HomePage(driver).clickOnCartBtn();
+        captureScreenshot(driver,"ProductsAddedToCart");
         Assert.assertEquals(firstProductPrice, new P10_CartPage(driver).firstProductAtCartPrice());
         Assert.assertEquals(secondProductPrice, new P10_CartPage(driver).secondProductAtCartPrice());
 

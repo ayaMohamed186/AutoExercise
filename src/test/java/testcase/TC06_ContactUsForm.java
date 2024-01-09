@@ -7,6 +7,7 @@ import pages.P06_ContactUsPage;
 
 import static testcase.TC02_LoginWithValidData.email1;
 import static testcase.TC02_LoginWithValidData.name1;
+import static util.Utility.captureScreenshot;
 
 public class TC06_ContactUsForm extends TestBase{
 
@@ -21,6 +22,7 @@ public class TC06_ContactUsForm extends TestBase{
 
         new P06_ContactUsPage(driver).fillNameInputField(name1).fillEmailInputField(email1).fillSubjectInputField(subject).
                 fillMsgInputField(msg).uploadFile().clickOnSubmitBtn().clickOnOKAlert();
+        captureScreenshot(driver,"contactUsSuccessMsg");
         Assert.assertTrue(new P06_ContactUsPage(driver).validateSuccessMsgDisplayed());
 
         new P06_ContactUsPage(driver).clickOnHomeBtn();

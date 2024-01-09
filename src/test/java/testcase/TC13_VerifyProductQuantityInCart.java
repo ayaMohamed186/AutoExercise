@@ -7,6 +7,8 @@ import pages.P08_ProductsPage;
 import pages.P09_ProductDetailsPage;
 import pages.P10_CartPage;
 
+import static util.Utility.captureScreenshot;
+
 public class TC13_VerifyProductQuantityInCart extends TestBase{
 
     @Test
@@ -17,6 +19,7 @@ public class TC13_VerifyProductQuantityInCart extends TestBase{
         new P09_ProductDetailsPage(driver).increaseProductQuantityTo4().clickOnContinueBtn();
         new P08_ProductsPage(driver).clickOnViewCartAtPopupMsg();
 
+        captureScreenshot(driver,"CorrectQuantityInCart");
         //assert that product display in cart with quantity 4
         Assert.assertEquals("4" , new P10_CartPage(driver).firstProductAtCartQuantity());
         System.out.println("actual number in cart is "+ new P10_CartPage(driver).firstProductAtCartQuantity() );

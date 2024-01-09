@@ -7,6 +7,7 @@ import pages.P02_SignUpLoginPage;
 
 import static testcase.TC02_LoginWithValidData.email1;
 import static testcase.TC02_LoginWithValidData.password1;
+import static util.Utility.captureScreenshot;
 
 public class TC04_Logout extends TestBase{
     String newUrl;
@@ -22,6 +23,7 @@ public class TC04_Logout extends TestBase{
 
         new P01_HomePage(driver).clickLogOutBtn();
         newUrl = driver.getCurrentUrl();
+        captureScreenshot(driver,"userLoggedOut");
         Assert.assertTrue(newUrl.contains("/login")); // Assert expected pattern
 
     }

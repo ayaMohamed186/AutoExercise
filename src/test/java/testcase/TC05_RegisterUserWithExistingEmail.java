@@ -6,6 +6,7 @@ import pages.P01_HomePage;
 import pages.P02_SignUpLoginPage;
 
 import static testcase.TC02_LoginWithValidData.email1;
+import static util.Utility.captureScreenshot;
 
 public class TC05_RegisterUserWithExistingEmail extends TestBase{
 
@@ -18,6 +19,7 @@ public class TC05_RegisterUserWithExistingEmail extends TestBase{
         Assert.assertEquals(new P02_SignUpLoginPage(driver).validateSignUpHeaderDisplay(), "New User Signup!");
 
         new P02_SignUpLoginPage(driver).fillNameInputFieldForSignUP(name).fillEmailInputFieldForSignUP(email1).clickOnSIgnUpBtn();
+        captureScreenshot(driver,"emailAlreadyRegisterMsg");
         Assert.assertTrue(new P02_SignUpLoginPage(driver).verifyValidationSignUpDisplay());
     }
 }

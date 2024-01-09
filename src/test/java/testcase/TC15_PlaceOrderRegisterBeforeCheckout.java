@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import pages.*;
 
 import static testcase.TC02_LoginWithValidData.*;
+import static util.Utility.captureScreenshot;
 import static util.Utility.generateRandomInt;
 
 public class TC15_PlaceOrderRegisterBeforeCheckout extends TestBase{
@@ -58,9 +59,11 @@ public class TC15_PlaceOrderRegisterBeforeCheckout extends TestBase{
         new P11_CheckoutPage(driver).fillCommentField(checkoutComment).clickOnPlaceOrder();
         new P12_PaymentPage(driver).fillCardHolderName(cardName).fillCreditCardNumberField(CreditCardNumberGenerated).
                 fillCardCVC(code).selectExpireYear(CardExpireYear).selectExpireMonth(CardExpireMonth).clickOnPayBtn();
+        captureScreenshot(driver,"OrderCreated");
         Assert.assertTrue(new P12_PaymentPage(driver).validateOrderCreatedSuccess());
 
         new P01_HomePage(driver).clickDeleteAccBtn();
+        captureScreenshot(driver,"accountDeleted");
         Assert.assertTrue(new P05_AccountDeletedPage(driver).validateAccDeletedDisplay());
 
         new P05_AccountDeletedPage(driver).clickOnContinueBtn();

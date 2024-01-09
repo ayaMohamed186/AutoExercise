@@ -6,6 +6,8 @@ import pages.P01_HomePage;
 import pages.P02_SignUpLoginPage;
 import pages.P03_EnterAccountInfoPage;
 import pages.P04_AccountCreatedPage;
+
+import static util.Utility.captureScreenshot;
 import static util.Utility.generateRandomInt;
 
 public class TC02_LoginWithValidData extends TestBase{
@@ -29,6 +31,7 @@ public class TC02_LoginWithValidData extends TestBase{
         Assert.assertTrue(new P01_HomePage(driver).validateHomePageIsVisible());
 
         new P01_HomePage(driver).clickSingUpLoginButton();
+        captureScreenshot(driver,"loginFormDisplay");
         Assert.assertTrue(new P02_SignUpLoginPage(driver).validateLoginToAccMsgDisplay());
 
         // SignUp for new user
@@ -45,6 +48,7 @@ public class TC02_LoginWithValidData extends TestBase{
         //login with register user
         new P01_HomePage(driver).clickSingUpLoginButton();
         new P02_SignUpLoginPage(driver).fillEmailFieldForLogin(email1).fillPasswordFieldForLogin(password1).clickOnLoginBtn();
+        captureScreenshot(driver,"userLoggedCorrect");
         Assert.assertTrue(new P01_HomePage(driver).validateLoggedAsUserNameDisplay());
     }
 }

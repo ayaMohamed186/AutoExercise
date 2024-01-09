@@ -8,7 +8,7 @@ import pages.*;
 import static testcase.TC02_LoginWithValidData.email1;
 import static testcase.TC02_LoginWithValidData.password1;
 
-public class TC16_PlaceOrderLoginBeforeCheckout extends TestBase{
+public class TC16_PlaceOrderLoginBeforeCheckout extends TestBase {
     String checkoutComment = "comment test";
     String cardName = "ayatest";
     String code = "123";
@@ -17,7 +17,7 @@ public class TC16_PlaceOrderLoginBeforeCheckout extends TestBase{
     String CardExpireMonth = "06";
 
     @Test
-    public void placeOrderLoginBeforeCheckout(){
+    public void placeOrderLoginBeforeCheckout() {
         Assert.assertTrue(new P01_HomePage(driver).validateHomePageIsVisible());
 
         new P01_HomePage(driver).clickSingUpLoginButton();
@@ -29,8 +29,7 @@ public class TC16_PlaceOrderLoginBeforeCheckout extends TestBase{
         new P08_ProductsPage(driver).hoverOnSecondProduct().clickOnAddToCartSecondProd().clickOnViewCartAtPopupMsg();
 
         new P10_CartPage(driver).clickOnProcessedToCheckoutBtn();
-//11. Verify Address Details and Review Your Order
-
+        //11. Verify Address Details and Review Your Order
         new P11_CheckoutPage(driver).fillCommentField(checkoutComment).clickOnPlaceOrder();
         new P12_PaymentPage(driver).fillCardHolderName(cardName).fillCreditCardNumberField(CreditCardNumberGenerated).
                 fillCardCVC(code).selectExpireYear(CardExpireYear).selectExpireMonth(CardExpireMonth).clickOnPayBtn();

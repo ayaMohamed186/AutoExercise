@@ -89,6 +89,7 @@ public class P02_SignUpLoginPage {
     }
 
     public boolean verifyValidationSignUpDisplay(){
+        shortWait(driver).until(ExpectedConditions.elementToBeClickable(this.validationOfEmailAlreadyRegistered));
         return driver.findElement(this.validationOfEmailAlreadyRegistered).isDisplayed();
     }
 }

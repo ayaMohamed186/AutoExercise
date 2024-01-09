@@ -9,6 +9,8 @@ import util.Utility;
 
 import java.io.IOException;
 
+import static util.Utility.captureScreenshot;
+
 public class TC03_LoginWithInValidData extends TestBase{
 
     String mail = Utility.getSingleJsonData(System.getProperty("user.dir") + "/src/test/resources/data_driven/InvalidloginData.json", "email");
@@ -22,9 +24,11 @@ public class TC03_LoginWithInValidData extends TestBase{
         Assert.assertTrue(new P01_HomePage(driver).validateHomePageIsVisible());
 
         new P01_HomePage(driver).clickSingUpLoginButton();
+        captureScreenshot(driver,"loginFormDisplay");
         Assert.assertTrue(new P02_SignUpLoginPage(driver).validateLoginToAccMsgDisplay());
 
         new P02_SignUpLoginPage(driver).fillEmailFieldForLogin(mail).fillPasswordFieldForLogin(password).clickOnLoginBtn();
+        captureScreenshot(driver,"loggedUserCorrect");
         Assert.assertTrue(new P02_SignUpLoginPage(driver).verifyValidationDisplay());
 
     }

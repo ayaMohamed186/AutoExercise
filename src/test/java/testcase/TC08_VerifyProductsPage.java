@@ -7,6 +7,8 @@ import pages.P01_HomePage;
 import pages.P08_ProductsPage;
 import pages.P09_ProductDetailsPage;
 
+import static util.Utility.captureScreenshot;
+
 public class TC08_VerifyProductsPage extends TestBase{
 
     @Test
@@ -17,8 +19,8 @@ public class TC08_VerifyProductsPage extends TestBase{
         Assert.assertTrue(new P08_ProductsPage(driver).validateProductsPageDisplay());
 
         // assert The products list is visible
-
         new P08_ProductsPage(driver).clickOnViewProductFirstItem();
+        captureScreenshot(driver,"firstProductDetails");
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertTrue(new P09_ProductDetailsPage(driver).validateProductNameVisible());
         softAssert.assertTrue(new P09_ProductDetailsPage(driver).validateProductCategoryVisible());
