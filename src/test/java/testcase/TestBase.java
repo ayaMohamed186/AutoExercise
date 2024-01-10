@@ -36,7 +36,7 @@ public class TestBase {
 
     @BeforeSuite
     public void defineSuite() throws Exception {
-        MyScreenRecorder.startRecording("OrangeHRM");
+        MyScreenRecorder.startRecording("AutomationExercise");
 
         // initialize the HtmlReporter
         htmlReporter = new ExtentSparkReporter(System.getProperty("user.dir") + "/testReport.html");
