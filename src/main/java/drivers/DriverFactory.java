@@ -9,6 +9,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
 import java.util.HashMap;
@@ -47,12 +48,15 @@ public class DriverFactory {
                 prefs.put("credentials_enable_service", false);
                 prefs.put("profile.password_manager_enabled", false);
 
+                chromeOptions.addExtensions(new File(System.getProperty("user.dir") +"/src/test/resources/aDBlock.crx"));
+
                 chromeOptions.addArguments("start-maximized");
                 chromeOptions.addArguments("--disable-web-security");
                 chromeOptions.addArguments("--no-proxy-server");
                 chromeOptions.addArguments("--remote-allow-origins=*");
                 chromeOptions.setExperimentalOption("prefs", prefs);
                 chromeOptions.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+
 
 
                 WebDriverManager.chromedriver().setup();

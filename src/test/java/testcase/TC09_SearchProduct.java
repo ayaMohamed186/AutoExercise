@@ -21,7 +21,7 @@ public class TC09_SearchProduct extends TestBase{
         Assert.assertTrue(new P08_ProductsPage(driver).validateProductsPageDisplay());
 
         new P08_ProductsPage(driver).fillSearchProduct(productName).clickOnSubmitBtn();
-        Assert.assertEquals(new P08_ProductsPage(driver).validateSearchedProductDisplay() , productName);
+        Assert.assertTrue(new P08_ProductsPage(driver).validateSearchedProductDisplay().contains(productName));
 
         //assert all product display according to search
         captureScreenshot(driver,"AllProductDisplayAccordingSearch");

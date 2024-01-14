@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import static pages.PageBase.longWait;
 import static pages.PageBase.shortWait;
 
 public class P07_TestCasesPage {
@@ -15,7 +16,7 @@ public class P07_TestCasesPage {
     private final By testCasesMsg = By.xpath("//div[@class='col-sm-9 col-sm-offset-1']/h2/b");
 
     public boolean validateTestCasePageDisplay(){
-        shortWait(driver).until(ExpectedConditions.visibilityOfElementLocated(this.testCasesMsg));
+        longWait(driver).until(ExpectedConditions.visibilityOfElementLocated(this.testCasesMsg));
         return driver.findElement(this.testCasesMsg).isDisplayed();
     }
 }
